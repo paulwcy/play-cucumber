@@ -18,14 +18,14 @@ public class PlayBackend extends JavaBackend {
 	public void loadGlue(Glue glue, List<String> gluePaths) {
 		super.loadGlue(glue, gluePaths);
 		for (Class<?> glueCodeClass : Play.classloader.getAllClasses()) {
-			while (glueCodeClass != Object.class 
-					&& !glueCodeClass.isInterface() 					
+			while (glueCodeClass != Object.class
+					&& !glueCodeClass.isInterface()
 					&& !Utils.isInstantiable(glueCodeClass)) {
 				// those can't be instantiated without container class present.
 				glueCodeClass = glueCodeClass.getSuperclass();
-			}			
-			for (Method method : glueCodeClass.getMethods()) {				
-				loadGlue(glue, method);
+			}
+			for (Method method : glueCodeClass.getMethods()) {
+				loadGlue(glue, method, glueCodeClass);
 			}				
 		}
 	}

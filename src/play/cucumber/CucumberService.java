@@ -103,7 +103,7 @@ public class CucumberService {
 	private final static String CUCUMBER_RESULT_PATH = "test-result/cucumber/";
 
 	private static RunResult runFeature(CucumberFeature cucumberFeature, boolean dryRun, Formatter...formatters) {
-		RuntimeOptions runtimeOptions = new RuntimeOptions();
+		RuntimeOptions runtimeOptions = new RuntimeOptions(System.getProperties());
 
 		// Remove the progress formater ()because it closes the default output stream)
 		for (Formatter formatter : runtimeOptions.formatters) {
