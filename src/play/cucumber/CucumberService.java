@@ -154,6 +154,7 @@ public class CucumberService {
 	private static StringWriter addPrettyFormatter(RuntimeOptions runtimeOptions) {
 		StringWriter prettyWriter = new StringWriter();
 		CucumberPrettyFormatter prettyFormatter = new CucumberPrettyFormatter(prettyWriter);
+		prettyFormatter.setMonochrome(true);
 		runtimeOptions.formatters.add(prettyFormatter);
 		return prettyWriter;
 	}
